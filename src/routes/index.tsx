@@ -1,15 +1,15 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import ProductDescription from "./product-description";
 
 export default component$(() => {
+  const count = useSignal(0);
+
   return (
     <>
-      <h1>Hi 👋</h1>
-      <div>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </div>
+      <button onClick$={() => count.value++}>Increment</button>
+      <div>Count: {count.value}</div>
+      <ProductDescription />
     </>
   );
 });
